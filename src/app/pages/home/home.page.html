@@ -7,11 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="scrolling-wrapper">
+    <ion-card class="epi-banners" *ngFor="let epi of latestEpisodes">
+      <img [src]="epi.image" alt=""/>
+      <div class="number">{{epi.id}}</div>
+    </ion-card>
+  </div>
 </ion-content>

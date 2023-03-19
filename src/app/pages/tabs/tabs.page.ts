@@ -27,33 +27,38 @@ export class TabsPage {
 
   ionViewDidEnter() {
     let selectedTab = this.mTabs.getSelected();
-    this.changeColorOfActivatedTab(selectedTab === undefined ? "" : selectedTab);
+    this.changeIconAccordingToActivatedTab(selectedTab === undefined ? "" : selectedTab);
   }
 
+  // changing home icon
   changeHomeIcon(): void {
     this.resetAll();
     this.isHomeSelected = true;
   }
 
+  //changing search icon
   changeSearchIcon(): void {
     this.resetAll();
     this.isSearchSelected = true;
   }
 
+  //changing watch later icon
   changeWatchIcon(): void {
     this.resetAll();
     this.isWatchSelected = true;
   }
 
+  //reset all icon states
   resetAll() {
     this.isHomeSelected = false;
     this.isSearchSelected = false;
     this.isWatchSelected = false;
   }
 
-  changeColorOfActivatedTab(tabName: string) {
+  //changing all the icons according to activated tab
+  changeIconAccordingToActivatedTab(tabName: string) {
     switch (tabName) {
-      case 'home':
+      case 'home' :
         this.isHomeSelected = true;
         break;
       case  'search' :
