@@ -26,7 +26,6 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "theme/variables";
 
-
 //Custom Fonts
 @import "theme/fonts";
 
@@ -37,5 +36,40 @@
 
 ion-tab-button.tab-selected ion-label {
   color: $main-color;
+}
+
+
+.search-bat-outer-div {
+  margin: 20px;
+  position: relative;
+
+  img {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    margin: auto;
+    height: 20px;
+  }
+
+  .search {
+    background: #3A3F47;
+    border-radius: 16px;
+    height: 45px;
+
+    input {
+      text-indent: 20px !important;
+
+    }
+  }
+}
+
+.mt-2 {
+  margin-top: 2rem !important;
+}
+
+input {
+  font-family: 'p-regular', serif !important;
 }
 

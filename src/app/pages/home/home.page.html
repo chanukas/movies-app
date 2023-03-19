@@ -1,14 +1,19 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="mt-2">
       The Rick and Morty
     </ion-title>
+
+    <div class="search-bat-outer-div">
+      <ion-input [formControl]="searchControl" placeholder="Search" class="search"></ion-input>
+      <img src="assets/icon/search.png" alt="">
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="scrolling-wrapper">
-    <ion-card class="epi-banners" *ngFor="let epi of latestEpisodes">
+    <ion-card class="epi-banners" *ngFor="let epi of filteredEpisodes ">
       <img [src]="epi.image" alt=""/>
       <div class="number">{{epi.id}}</div>
     </ion-card>

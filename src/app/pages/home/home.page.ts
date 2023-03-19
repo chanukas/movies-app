@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {EpisodeService} from "../../services/episode.service";
 import {ToastController} from "@ionic/angular";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {filter, map, Observable, of, startWith, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -10,12 +12,22 @@ import {ToastController} from "@ionic/angular";
 export class HomePage implements OnInit {
 
   public latestEpisodes: Array<any> = [];
+  public filteredEpisodes: Array<any> = [];
 
-  constructor(private epiService: EpisodeService, private toastController: ToastController) {
+  searchControl = new FormControl();
+
+  constructor(private epiService: EpisodeService, private toastController: ToastController, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.getLatestEpisodes();
+
+    //implementing a search
+    this.searchControl.valueChanges
+      .pipe(
+        startWith('')).subscribe(value => {
+      this.filteredEpisodes = this.onSearch(value)
+    });
   }
 
   //getting 10 episodes from the API
@@ -37,7 +49,14 @@ export class HomePage implements OnInit {
     epiArray.forEach(data => {
       let randomNum = Math.floor(Math.random() * 5) + 1
       data.image = "assets/images/epi-banners/e" + randomNum + ".png";
-    })
+    });
+
+    this.filteredEpisodes = epiArray;
+  }
+
+  // searching name in the latest episode array
+  onSearch(value: any) {
+    return this.latestEpisodes.filter(item => item.name.toLowerCase().includes(value?.toLowerCase()));
   }
 
   async presentErrorToast() {
