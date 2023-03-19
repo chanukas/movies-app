@@ -24,3 +24,18 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import "theme/variables";
+
+
+//Custom Fonts
+@import "theme/fonts";
+
+
+* body {
+  font-family: 'p-regular', serif !important;
+}
+
+ion-tab-button.tab-selected ion-label {
+  color: $main-color;
+}
+
