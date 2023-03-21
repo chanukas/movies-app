@@ -25,7 +25,7 @@
       margin-bottom: -25px;
       left: 5px;
       color: #242A32;
-      text-shadow: 0 0 0.5px #0296E5;
+      text-shadow: 0 1px 1px #0296E5;
       padding-bottom: 3px;
       font-family: montserrat-semibold, serif;
     }
@@ -35,6 +35,10 @@
     color: #FFFFFF;
     text-transform: unset;
     font-family: 'p-regular', serif !important;
+    font-weight: 500;
+    line-height: 21px;
+    font-style: normal;
+    font-size: 15px;
   }
 }
 
@@ -44,6 +48,7 @@
 
   .bottom-cards{
     margin: 5px!important;
+    box-shadow: none;
   }
 }
 .border-bottom{

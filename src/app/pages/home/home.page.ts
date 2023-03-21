@@ -77,7 +77,7 @@ export class HomePage implements OnInit {
   //getting epis with pagination
   public getEpisodesWithPagination(page: number, event: any) {
 
-    this.epiService.getEpisodesWithPagination(page).subscribe({
+    this.epiService.getEpisodesWithPagination(page,"").subscribe({
       next: (res: any) => {
         this.pagedInfo = res.info;
 
