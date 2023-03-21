@@ -12,7 +12,7 @@
 
     img {
       padding-left: 15px;
-      height: 25vh;
+      height: 15rem;
       margin-bottom: 15px;
       max-width: 100%;
     }
@@ -30,7 +30,23 @@
       font-family: montserrat-semibold, serif;
     }
   }
+
+  .list-btn{
+    color: #FFFFFF;
+    text-transform: unset;
+    font-family: 'p-regular', serif !important;
+  }
 }
+
+.bottom-grid{
+  margin-left: 5px!important;
+  margin-right: 5px!important;
+
+  .bottom-cards{
+    margin: 5px!important;
+  }
+}
+
 
 
 
