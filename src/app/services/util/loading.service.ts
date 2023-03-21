@@ -16,9 +16,9 @@ export class LoadingService {
       message: 'Loading...'
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
+
         if (!this.isLoading) {
-          a.dismiss().then(() => console.log('abort presenting'));
+          a.dismiss().then(() => {});
         }
       });
     });

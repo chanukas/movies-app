@@ -18,6 +18,10 @@ export class HomePage implements OnInit {
   public pagedEpisodes: Array<any> = [];
   private pagedInfo: any = {};
   private currentIndex: number = 1;
+  public isSelectedNowPlay : boolean = true;
+  public isUpcoming : boolean = false;
+  public isTopRated : boolean = false;
+  public isPopular : boolean = false;
 
   constructor(private epiService: EpisodeService, private toastController: ToastController, public loadingService: LoadingService) {
   }
@@ -73,9 +77,6 @@ export class HomePage implements OnInit {
   //getting epis with pagination
   public getEpisodesWithPagination(page: number, event: any) {
 
-    //presenting a loading overlay
-    this.loadingService.present();
-
     this.epiService.getEpisodesWithPagination(page).subscribe({
       next: (res: any) => {
         this.pagedInfo = res.info;
@@ -92,9 +93,6 @@ export class HomePage implements OnInit {
       error: (err) => {
         //presenting error toast
         this.presentErrorToast();
-      }, complete: () => {
-        //dismissing a loading overlay
-        this.loadingService.dismiss();
       }
     })
   }
@@ -102,6 +100,45 @@ export class HomePage implements OnInit {
   // searching name in the latest episode array
   onSearch(value: any) {
     return this.latestEpisodes.filter(item => item.name.toLowerCase().includes(value?.toLowerCase()));
+  }
+
+  public getNowPlayingEpisodes(){
+    this.resetAllButtonStatus();
+    this.isSelectedNowPlay = true;
+    this.currentIndex = 1
+    this.pagedEpisodes = [];
+    this.getEpisodesWithPagination(this.currentIndex, null);
+  }
+
+  public getUpComingEpisodes(){
+    this.resetAllButtonStatus();
+    this.isUpcoming = true;
+    this.currentIndex = 1
+    this.pagedEpisodes = [];
+    this.getEpisodesWithPagination(this.currentIndex, null);
+  }
+
+  public getTopRatedEpisodes(){
+    this.resetAllButtonStatus();
+    this.isTopRated = true;
+    this.currentIndex = 1
+    this.pagedEpisodes = [];
+    this.getEpisodesWithPagination(this.currentIndex, null);
+  }
+
+  public getPopularEpisodes(){
+    this.resetAllButtonStatus();
+    this.isPopular = true;
+    this.currentIndex = 1
+    this.pagedEpisodes = [];
+    this.getEpisodesWithPagination(this.currentIndex, null);
+  }
+
+  private resetAllButtonStatus(){
+    this.isSelectedNowPlay = false;
+    this.isUpcoming = false;
+    this.isTopRated = false;
+    this.isPopular = false;
   }
 
   async presentErrorToast() {

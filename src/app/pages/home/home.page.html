@@ -20,26 +20,26 @@
   </div>
 
   <div class="scrolling-wrapper">
-    <ion-button fill="clear" class="list-btn">Now Playing</ion-button>
-    <ion-button fill="clear" class="list-btn">Upcoming</ion-button>
-    <ion-button fill="clear" class="list-btn">Top Rated</ion-button>
-    <ion-button fill="clear" class="list-btn">Popular</ion-button>
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isSelectedNowPlay}" (click)="getNowPlayingEpisodes()">Now Playing</ion-button>
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isUpcoming}" (click)="getUpComingEpisodes()">Upcoming</ion-button>
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isTopRated}" (click)="getTopRatedEpisodes()">Top Rated</ion-button>
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isPopular}" (click)="getPopularEpisodes()">Popular</ion-button>
   </div>
 
   <ion-grid class="bottom-grid">
     <ion-row>
 
-          <ion-col sizeLg="3" sizeMd="3" sizeXs="4" *ngFor="let epi of pagedEpisodes;">
+      <ion-col sizeLg="3" sizeMd="3" sizeXs="4" *ngFor="let epi of pagedEpisodes;">
 
-            <ion-card class="bottom-cards">
-              <img [src]="epi.image" alt=""/>
-            </ion-card>
+        <ion-card class="bottom-cards">
+          <img [src]="epi.image" alt=""/>
+        </ion-card>
 
-          </ion-col>
+      </ion-col>
 
-        <ion-infinite-scroll (ionInfinite)="onNextPage($event)">
-          <ion-infinite-scroll-content></ion-infinite-scroll-content>
-        </ion-infinite-scroll>
+      <ion-infinite-scroll (ionInfinite)="onNextPage($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
 
     </ion-row>
   </ion-grid>
