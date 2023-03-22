@@ -63,3 +63,37 @@
 .m-right-15{
   margin-right: 15px!important;
 }
+
+.not-found-fl-div{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-bottom: 10rem;
+
+  .i-div{
+    width: 100%;
+
+    img{
+      height: 110px;
+      margin-bottom: 5px;
+    }
+
+    .f-title{
+      font-size: 18px;
+      color: #EBEBEF;
+      font-family: montserrat-semibold, serif!important;
+      line-height: 160%;
+
+    }
+
+    .s-title{
+      color: #92929D;
+      font-size: 15px;
+      font-family: montserrat-semibold, serif!important;
+      line-height: 160%;
+    }
+  }
+}

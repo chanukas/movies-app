@@ -1,8 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {InfiniteScrollCustomEvent, ToastController} from "@ionic/angular";
+import {InfiniteScrollCustomEvent, NavController, ToastController} from "@ionic/angular";
 import {EpisodeService} from "../../services/episode.service";
 import {debounceTime, distinctUntilChanged, filter, fromEvent, map} from "rxjs";
+import {LoadingService} from "../../services/util/loading.service";
 
 @Component({
   selector: 'app-search',
@@ -14,15 +15,22 @@ export class SearchPage implements OnInit {
   searchControl = new FormControl();
   public pagedEpisodes: Array<any> = [];
   private pagedInfo: any = {};
-
   private currentIndex: number = 1;
+  public isNotFound: boolean = false;
 
-  constructor(private epiService: EpisodeService, private toastController: ToastController) {
+  constructor(private epiService: EpisodeService, private toastController: ToastController, public loadingService: LoadingService,private navController: NavController) {
   }
 
+  ngOnInit(): void {
+    this.getEpisodesWithPagination(this.currentIndex, null, "");
+    this.addTimeBetweenSearchKeys();
+
+  }
 
   //getting epis with pagination
-  public getEpisodesWithPagination(page: number, event: any,name:string) {
+  public getEpisodesWithPagination(page: number, event: any, name: string) {
+
+    this.loadingService.present();
 
     this.epiService.getEpisodesWithPagination(page, name).subscribe({
       next: (res: any) => {
@@ -38,8 +46,16 @@ export class SearchPage implements OnInit {
         }
       },
       error: (err) => {
-        //presenting error toast
-        this.presentErrorToast();
+        if (err.status == 404) {
+          this.isNotFound = true;
+        } else {
+          //presenting error toast
+          this.presentErrorToast();
+        }
+        this.loadingService.dismiss();
+      }, complete: () => {
+        this.isNotFound = false;
+        this.loadingService.dismiss();
       }
     })
   }
@@ -62,15 +78,8 @@ export class SearchPage implements OnInit {
     return epiArray;
   }
 
-  ngOnInit(): void {
 
-    this.getEpisodesWithPagination(this.currentIndex, null,"");
-
-    this.addTimeBetweenSearchKeys();
-
-  }
-
-  addTimeBetweenSearchKeys(){
+  addTimeBetweenSearchKeys() {
     this.searchControl.valueChanges.pipe(
       // get value
       map((event: any) => {
@@ -85,7 +94,7 @@ export class SearchPage implements OnInit {
 
       this.currentIndex = 1;
       this.pagedEpisodes = [];
-      this.getEpisodesWithPagination(this.currentIndex,null, text);
+      this.getEpisodesWithPagination(this.currentIndex, null, text);
     });
   }
 
@@ -93,10 +102,13 @@ export class SearchPage implements OnInit {
 
     if (this.pagedInfo.next != null) {
       this.currentIndex++;
-      this.getEpisodesWithPagination(this.currentIndex, ev,"");
+      this.getEpisodesWithPagination(this.currentIndex, ev, "");
     } else {
       (ev as InfiniteScrollCustomEvent).target.complete();
     }
   }
 
+  onBack() {
+    this.navController.back();
+  }
 }
