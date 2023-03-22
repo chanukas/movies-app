@@ -1,12 +1,12 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonTabs} from "@ionic/angular";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {IonTabs, TabsCustomEvent} from "@ionic/angular";
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {
+export class TabsPage{
 
   @ViewChild('mTabs') mTabs: IonTabs;
 
@@ -68,4 +68,10 @@ export class TabsPage {
         this.isWatchSelected = true;
     }
   }
+
+  ionTabsDidChange(){
+
+  }
+
+
 }
