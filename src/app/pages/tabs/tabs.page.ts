@@ -69,9 +69,4 @@ export class TabsPage{
     }
   }
 
-  ionTabsDidChange(){
-
-  }
-
-
 }

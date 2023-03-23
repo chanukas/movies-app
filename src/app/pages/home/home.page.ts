@@ -151,7 +151,6 @@ export class HomePage implements OnInit {
   }
 
   onNextPage(ev: any) {
-
     if (this.pagedInfo.next != null) {
       this.currentIndex++;
       this.getEpisodesWithPagination(this.currentIndex, ev);
