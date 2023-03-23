@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="mt-2">
+      The Rick and Morty
+    </ion-title>
+
+    <div class="search-bat-outer-div">
+      <ion-input [formControl]="searchControl" placeholder="Search" class="search"></ion-input>
+      <img src="assets/icon/search.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="scrolling-wrapper">
+    <ion-card class="epi-banners" *ngFor="let epi of filteredEpisodes ">
+      <img [src]="epi.image" alt=""/>
+      <div class="number">{{epi.id}}</div>
+    </ion-card>
+  </div>
+
+  <div class="scrolling-wrapper">
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isSelectedNowPlay}" (click)="getNowPlayingEpisodes()">Now Playing</ion-button>
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isUpcoming}" (click)="getUpComingEpisodes()">Upcoming</ion-button>
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isTopRated}" (click)="getTopRatedEpisodes()">Top Rated</ion-button>
+    <ion-button fill="clear" class="list-btn" [ngClass]="{'border-bottom' : isPopular}" (click)="getPopularEpisodes()">Popular</ion-button>
+  </div>
+
+  <ion-grid class="bottom-grid">
+    <ion-row>
+
+      <ion-col sizeLg="3" sizeMd="3" sizeXs="4" *ngFor="let epi of pagedEpisodes;">
+
+        <ion-card class="bottom-cards" (click)="onDetailPage(epi)">
+          <img [src]="epi.image" alt=""/>
+        </ion-card>
+
+      </ion-col>
+
+      <ion-infinite-scroll (ionInfinite)="onNextPage($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,126 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="mt-1">
+
+    <ion-buttons slot="start" class="ml-1" (click)="onBack()">
+      <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+    </ion-buttons>
+
+    <ion-title class="search-title">
+      Detail
+    </ion-title>
+
+    <ion-buttons slot="end" class="mr-1">
+      <ion-icon name="bookmark" size="large"></ion-icon>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="cover-div">
+
+    <div class="rating-div">
+      <div class="inside-div" id="open-modal">
+        <img src="assets/icon/banner/star.png" alt="">
+        <span>9.5</span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="sec-div">
+    <img class="b-image" [src]="data.image" alt="">
+    <span>{{data.name}}</span>
+  </div>
+
+  <div class="info-div">
+    <div class="inside-d first-b-div">
+      <img src="assets/icon/gray/cal.png" alt="">
+      <span>{{data.created | date: 'y'}}</span>
+    </div>
+
+    <div class="inside-d">
+      <img src="assets/icon/gray/clock.png" alt="">
+      <span>148 Minutes</span>
+    </div>
+
+    <div class="inside-d last-b-div">
+      <img src="assets/icon/gray/ticket.png" alt="">
+      <span>{{data.episode}}</span>
+    </div>
+
+  </div>
+
+  <ion-segment class="segm" (ionChange)="segmentChanged($event)" [(ngModel)]="segmentStatus">
+    <ion-segment-button value="about" class="seg-buttons">
+      <ion-label>About Movie</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="reviews" class="seg-buttons">
+      <ion-label>Reviews</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="cast" class="seg-buttons">
+      <ion-label>Cast</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <ion-grid class="bottom-grid">
+
+    <div *ngIf="segmentStatus === 'about'">
+
+      <div class="txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur fugiat, iste iure maiores
+        officiis quasi sapiente voluptatibus. Asperiores earum est fugiat ipsum, nam, nulla provident quae quo ratione
+        repellat voluptas.
+      </div>
+
+    </div>
+
+    <div *ngIf="segmentStatus === 'reviews'">
+      <div class="txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias nam quidem similique voluptatem?
+        Animi aperiam consequuntur doloremque, eaque, exercitationem facilis ipsum non pariatur reprehenderit similique
+        vitae voluptate! Commodi, laboriosam nemo.
+      </div>
+    </div>
+
+    <ion-row *ngIf="segmentStatus === 'cast'" class="image-grid">
+
+      <ion-col sizeXs="6" *ngFor="let character of characters">
+
+        <ion-avatar>
+          <img alt="" [src]="character.image"/>
+        </ion-avatar>
+        <span>{{character.name}}</span>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--  <ion-button id="open-modal" expand="block">Open Sheet Modal</ion-button>-->
+
+  <ion-modal class="r-model"
+             trigger="open-modal"
+             [initialBreakpoint]="0.25"
+             [breakpoints]="[0, 0.25, 0.5, 0.75]"
+             handleBehavior="cycle"
+  >
+    <ng-template class="inner-scroll">
+      <ion-content class="ion-padding inner-scroll">
+
+        <div class="btn-close" (click)="dismissModel()">
+          <img src="assets/icon/close.png" alt="">
+        </div>
+
+        <div>
+          <ion-label class="rate-this">Rate this episode</ion-label>
+
+          <div class="percentage">{{ratingValue}}</div>
+          <ion-range (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>

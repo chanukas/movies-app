@@ -1,0 +1,143 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "theme/variables";
+
+//Custom Fonts
+@import "theme/fonts";
+
+
+* body {
+  font-family: 'p-regular', serif !important;
+  background: #242A32 !important;
+}
+
+ion-tab-button.tab-selected ion-label {
+  color: $main-color;
+}
+
+
+.search-bat-outer-div {
+  margin: 20px;
+  position: relative;
+
+  img {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    margin: auto;
+    height: 20px;
+  }
+
+  .search {
+    background: #3A3F47;
+    border-radius: 16px;
+    height: 45px;
+
+    input {
+      text-indent: 20px !important;
+
+    }
+  }
+}
+
+.mt-2 {
+  margin-top: 2rem !important;
+}
+
+.mt-1 {
+  margin-top: 1rem !important;
+}
+
+input {
+  font-family: 'p-regular', serif !important;
+}
+
+.ml-1 {
+  margin-left: 1.5rem !important;
+}
+
+.mr-1 {
+  margin-right: 1.5rem !important;
+}
+
+ion-tab-bar {
+  border-top: 2px solid #0296E5 !important;
+}
+
+.search-title {
+  text-align: center;
+  font-family: montserrat, serif !important;
+}
+
+ion-segment-button {
+  --color-checked: #3A3F47 !important;
+  --indicator-height: 4px !important;
+}
+
+
+.inner-scroll {
+  background: #FFFFFF !important;
+  border-radius: 24px 24px 0px 0px !important;
+}
+
+
+.modal-wrapper{
+  background: transparent !important;
+}
+
+
+
+
+ion-range {
+  --bar-background: #D9DBE9!important;
+  --bar-background-active: #FF8700;
+  --bar-height : 12px!important;
+  --bar-border-radius: 40px;
+  --knob-background: #FF8700;
+  --knob-size: 40px;
+  --pin-background: #FF8700;
+  --pin-color: #FF8700;
+
+  .range-knob{
+    border: 2px solid white!important;
+  }
+}
+
+ion-modal .ion-page {
+  --ion-modal-handle-height: 0;
+}
+
+.r-model{
+  background-color: rgba(0,0,0,0.6); /* Fallback for non-supporting browsers */
+  --backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+
+

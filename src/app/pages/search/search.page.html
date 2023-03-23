@@ -1,0 +1,83 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="mt-1">
+
+    <ion-buttons slot="start" class="ml-1" (click)="onBack()">
+      <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+    </ion-buttons>
+
+    <ion-title class="search-title">
+      Search
+    </ion-title>
+
+    <ion-buttons slot="end" class="mr-1">
+      <ion-icon name="information-circle-outline" size="large"></ion-icon>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="search-bat-outer-div">
+    <ion-input [formControl]="searchControl" placeholder="Search" class="search"></ion-input>
+    <img src="assets/icon/search.png" alt="">
+  </div>
+
+
+  <ion-content>
+
+    <div *ngIf="isNotFound" class="not-found-fl-div">
+
+      <div class="i-div">
+        <img src="assets/images/not-found.png" alt="">
+        <div class="f-title">We Are Sorry, We Can <br>
+          Not Find Anything :(</div>
+        <div class="s-title">Find your episodes by Title, categories, <br> years etc</div>
+      </div>
+
+    </div>
+
+    <ion-list class="m-left-15 m-right-15">
+      <ion-card class="cards" *ngFor="let epi of pagedEpisodes;">
+
+        <div>
+          <img class="b-img" [src]="epi.image" alt=""/>
+        </div>
+
+        <div class="m-left-15">
+          <div class="b-name">{{epi.name}}</div>
+
+          <div class="d-flx-div">
+            <img class="img" src="assets/icon/banner/star.png" alt="">
+            <span class="rating">9.5</span>
+          </div>
+
+          <div class="d-flx-div">
+            <img class="img" src="assets/icon/banner/ticket.png" alt="">
+            <span class="s-text">{{epi.episode}}</span>
+          </div>
+
+          <div class="d-flx-div">
+            <img class="img" src="assets/icon/banner/calendar-blank.png" alt="">
+            <span class="s-text">{{epi.created | date}}</span>
+          </div>
+
+          <div class="d-flx-div">
+            <img class="img" src="assets/icon/banner/clock.png" alt="">
+            <span class="s-text">120 mins</span>
+          </div>
+        </div>
+
+      </ion-card>
+
+      <ion-infinite-scroll (ionInfinite)="onNextPage($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+    </ion-list>
+
+
+  </ion-content>
+
+
+</ion-content>

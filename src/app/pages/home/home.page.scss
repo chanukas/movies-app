@@ -1,0 +1,60 @@
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-left: 12px;
+
+  .epi-banners {
+    box-shadow: none !important;
+    width: fit-content !important;
+    display: inline-block !important;
+    margin: 5px!important;
+
+    img {
+      padding-left: 15px;
+      height: 15rem;
+      margin-bottom: 15px;
+      max-width: 100%;
+    }
+
+
+    .number {
+      font-size: 100px;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: -25px;
+      left: 5px;
+      color: #242A32;
+      text-shadow: 0 1px 1px #0296E5;
+      padding-bottom: 3px;
+      font-family: montserrat-semibold, serif;
+    }
+  }
+
+  .list-btn{
+    color: #FFFFFF;
+    text-transform: unset;
+    font-family: 'p-regular', serif !important;
+    font-weight: 500;
+    line-height: 21px;
+    font-style: normal;
+    font-size: 15px;
+  }
+}
+
+.bottom-grid{
+  margin-left: 5px!important;
+  margin-right: 5px!important;
+
+  .bottom-cards{
+    margin: 5px!important;
+    box-shadow: none;
+  }
+}
+.border-bottom{
+  border-bottom: 4px solid #3A3F47!important;
+}
+
+
+
+

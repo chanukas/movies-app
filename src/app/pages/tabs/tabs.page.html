@@ -1,0 +1,20 @@
+<ion-tabs #mTabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" (click)="changeHomeIcon()">
+      <ion-icon [src]="isHomeSelected ? selectedHomeIcon : homeIcon"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="search" (click)="changeSearchIcon()">
+      <ion-icon [src]="isSearchSelected ? selectedSearchIcon : searchIcon"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="watch" (click)="changeWatchIcon()">
+      <ion-icon [src]="isWatchSelected ? selectedWatchIcon : watchIcon"></ion-icon>
+      <ion-label>Watch list</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>
