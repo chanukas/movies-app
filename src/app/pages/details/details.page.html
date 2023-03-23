@@ -69,7 +69,6 @@
   <ion-grid class="bottom-grid">
 
     <div *ngIf="segmentStatus === 'about'">
-
       <div class="txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur fugiat, iste iure maiores
         officiis quasi sapiente voluptatibus. Asperiores earum est fugiat ipsum, nam, nulla provident quae quo ratione
         repellat voluptas.
@@ -85,19 +84,14 @@
     </div>
 
     <ion-row *ngIf="segmentStatus === 'cast'" class="image-grid">
-
       <ion-col sizeXs="6" *ngFor="let character of characters">
-
         <ion-avatar>
           <img alt="" [src]="character.image"/>
         </ion-avatar>
         <span>{{character.name}}</span>
-
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <!--  <ion-button id="open-modal" expand="block">Open Sheet Modal</ion-button>-->
 
   <ion-modal class="r-model"
              trigger="open-modal"
