@@ -31,7 +31,7 @@
 
       <ion-col sizeLg="3" sizeMd="3" sizeXs="4" *ngFor="let epi of pagedEpisodes;">
 
-        <ion-card class="bottom-cards">
+        <ion-card class="bottom-cards" (click)="onDetailPage(epi)">
           <img [src]="epi.image" alt=""/>
         </ion-card>
 

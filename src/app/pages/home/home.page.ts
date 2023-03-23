@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {EpisodeService} from "../../services/episode.service";
-import {InfiniteScrollCustomEvent, LoadingController, ToastController} from "@ionic/angular";
+import {InfiniteScrollCustomEvent, LoadingController, NavController, ToastController} from "@ionic/angular";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {filter, map, Observable, of, startWith, switchMap} from "rxjs";
 import {LoadingService} from "../../services/util/loading.service";
@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
   public isTopRated : boolean = false;
   public isPopular : boolean = false;
 
-  constructor(private epiService: EpisodeService, private toastController: ToastController, public loadingService: LoadingService) {
+  constructor(private epiService: EpisodeService, private toastController: ToastController, public loadingService: LoadingService,public navCtrl: NavController) {
   }
 
   ngOnInit(): void {
@@ -50,6 +50,7 @@ export class HomePage implements OnInit {
     this.epiService.getLatestEpisodes().subscribe({
         next: (res: any) => {
           this.latestEpisodes = res;
+
           this.filteredEpisodes = this.setRandomBanner(this.latestEpisodes);
         },
         error: () => {
@@ -157,5 +158,12 @@ export class HomePage implements OnInit {
     } else {
       (ev as InfiniteScrollCustomEvent).target.complete();
     }
+  }
+
+  onDetailPage(data:any){
+    data.ids = data.characters.map((info:any)=>{ let ids = info.split("/"); return ids[ids.length - 1]});
+    this.navCtrl.navigateForward('/details', {
+      state:data
+    });
   }
 }
