@@ -109,7 +109,7 @@
         <div>
           <ion-label class="rate-this">Rate this episode</ion-label>
 
-          <div class="percentage">{{ratingValue}}</div>
+          <div class="percentage">{{ratingValue / 10}}</div>
           <ion-range (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
         </div>
       </ion-content>
