@@ -38,7 +38,7 @@
     </div>
 
     <ion-list class="m-left-15 m-right-15">
-      <ion-card class="cards" *ngFor="let epi of pagedEpisodes;">
+      <ion-card class="cards" *ngFor="let epi of pagedEpisodes;" (click)="onDetailPage(epi)">
 
         <div>
           <img class="b-img" [src]="epi.image" alt=""/>

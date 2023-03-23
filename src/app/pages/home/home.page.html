@@ -13,7 +13,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="scrolling-wrapper">
-    <ion-card class="epi-banners" *ngFor="let epi of filteredEpisodes ">
+    <ion-card class="epi-banners" *ngFor="let epi of filteredEpisodes " (click)="onDetailPage(epi)">
       <img [src]="epi.image" alt=""/>
       <div class="number">{{epi.id}}</div>
     </ion-card>

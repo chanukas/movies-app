@@ -18,7 +18,8 @@ export class SearchPage implements OnInit {
   private currentIndex: number = 1;
   public isNotFound: boolean = false;
 
-  constructor(private epiService: EpisodeService, private toastController: ToastController, public loadingService: LoadingService,private navController: NavController) {
+  constructor(private epiService: EpisodeService, private toastController: ToastController,
+              public loadingService: LoadingService,private navCtrl: NavController) {
   }
 
   ngOnInit(): void {
@@ -109,6 +110,13 @@ export class SearchPage implements OnInit {
   }
 
   onBack() {
-    this.navController.back();
+    this.navCtrl.back();
+  }
+
+  onDetailPage(data:any){
+    data.ids = data.characters.map((info:any)=>{ let ids = info.split("/"); return ids[ids.length - 1]});
+    this.navCtrl.navigateForward('/details', {
+      state:data
+    });
   }
 }
