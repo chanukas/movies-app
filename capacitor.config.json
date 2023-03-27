@@ -1,6 +1,17 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "movies-app",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "com.wemakeplatforms.movies",
+  "appName": "movies-app",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1000,
+      "launchAutoHide": true,
+      "launchFadeOutDuration": 500,
+      "androidSplashResourceName": "splash",
+      "splashFullScreen": true,
+      "splashImmersive": true
+    }
+  }
 }
+

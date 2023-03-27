@@ -19,23 +19,18 @@ import {Router} from "@angular/router";
 })
 export class DetailsPage implements OnInit {
 
-
-  ids: Array<any> = ['1', '2', '35', '38', '62', '92', '127', '144', '158', '175', '179', '181', '239', '249', '271', '338', '394', '395', '435']
   segmentStatus: string = "about";
-
   characters: Array<any> = [];
-
   data: any;
-
   ratingValue: any = 0;
 
   constructor(private characterService: CharacterService, private toastController: ToastController,
               public loadingService: LoadingService, private navController: NavController, public router: Router,
               private actionSheetCtrl: ActionSheetController, private modelCtrl: ModalController) {
     let currentNavigation = this.router.getCurrentNavigation();
+
     if (currentNavigation?.extras.state) {
       this.data = currentNavigation?.extras.state;
-      console.log(this.data)
     }
 
   }
